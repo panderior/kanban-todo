@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <title>Add Todo</title>
+</head>
+<body>
+<h2>  Add Todo </h2>
+<div class="col-sm-5 form-group-lg">
+    <form id="todo_form" method="POST" action="{% url 'add_todo' %}" enctype="multipart/form-data"``>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_title">Title</label>
+            <input name="title" type="text" class="form-control" id="id_title" placeholder="Enter title">
+        </div>     
+        <div class="form-group">
+            <label for="id_description">Description</label>
+            <input name="description" type="text" class="form-control" id="id_description" placeholder="Enter decription">
+        </div>   
+        <div class="form-group">
+            <label for="id_column">Column</label>
+            <input name="column" type="text" class="form-control" id="id_column" placeholder="Enter column">
+        </div>      
+        <div class="form-group">
+            <label for="id_palette">Pallete</label>
+            <input name="palette" type="text" class="form-control" id="id_palette" placeholder="Enter palette">
+        </div>      
+        <div class="form-group">
+            <label for="id_link">Link</label>
+            <input name="link" type="text" class="form-control" id="id_link" placeholder="Enter link">
+        </div>      
+        <div class="form-group">
+            <label for="id_attachment">Attachment</label>
+            <input name="attachment" type="file" class="form-control" id="id_attachment" placeholder="Enter attachment">
+        </div>      
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+
+</html>

@@ -2,7 +2,7 @@ Body {
   font-family: Sans-serif;
   font size: 14;
   width: 100%;
-  background-color: #E0E0E0;
+  background-color: #E0E0E0;  
 }
 
 h1 {
@@ -364,3 +364,4 @@ ol.kanban {
   box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, .5);
   cursor: move;
 }
+

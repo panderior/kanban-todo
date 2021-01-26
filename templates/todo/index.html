@@ -5,98 +5,73 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Kanban Board</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Arbutus+Slab'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css'><link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css'>
+<link rel="stylesheet" href="{% static 'style.css' %}">
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<!-- Simple MDL Progress Bar -->
-<div id="p1" class="mdl-progress mdl-js-progress"></div>
-<script>
-  document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
-    this.MaterialProgress.setProgress(44);
-  });
-</script><div class="kanban__title">
-      <h1><i class="material-icons">check</i> To do list</h1></div>
-<div class="dd">
+    <!-- partial:index.partial.html -->
+    <!-- Simple MDL Progress Bar -->
+    <div id="p1" class="mdl-progress mdl-js-progress"></div>
+    <script>
+      document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+        this.MaterialProgress.setProgress(44);
+      });
+    </script><div class="kanban__title">
+          <h1><i class="material-icons">check</i> To do list</h1></div>
+    <div class="dd">
+      {% if columns %}
+          {% for  one_col in columns %}
 
-  <ol class="kanban To-do">
-    <div class="kanban__title">
-      <h2><i class="material-icons">report_problem</i> To do</h2></div>
-   <li class="dd-item" data-id="1">
-      <h3 class="title dd-handle" >Do the dishes<i class=" material-icons ">filter_none</i></h3>
-        <div class="text" contenteditable="true">wwPaul Rand once said, “The public is more familiar with bad fucking design than good design. It is, in effect, conditioned to prefer 
-    
-     </div> <i class="material-icons" id="label blue">label</i><div class="actions">
-        <i class="material-icons" id="color">palette</i><i class="material-icons">edit</i><i class="material-icons">insert_link</i><i class="material-icons">attach_file</i></div>
-      
-    </li>
-    <li class="dd-item" data-id="4">
-      <h3 class="title dd-handle"><i class=" material-icons ">filter_none</i>log-in bug</h3>
-        <div class="text" contenteditable="true">Paul Rand once said, “The public is more familiar with bad fucking design than good design. It is, in effect, conditioned to prefer bad design,</div><div class="actions">
-        <i class="material-icons">palette</i><i class="material-icons">edit</i><i class="material-icons">insert_link</i><i class="material-icons">attach_file</i></div>
-      
-    </li>
-    <li class="dd-item" data-id="3">
-      <h3 class="title dd-handle"><i class=" material-icons ">filter_none</i>UX design</h3>
-        <div class="text" contenteditable="true">Paul Rand once said, “The public is more familiar with bad fucking design than good design. It is, in effect, conditioned to prefer bad design,</div><div class="actions">
-        <i class="material-icons">palette</i><i class="material-icons">edit</i><i class="material-icons">insert_link</i><i class="material-icons">attach_file</i></div>
-      
-    
-    <div class="actions">
-      <button class="addbutt"><i class="material-icons">control_point</i> Add new</button>
-    </div>
-  </ol>
-  <ol class="kanban progress">
-    <h2><i class="material-icons">build</i> In progress</h2>
-      <li class="dd-item" data-id="5">
-      <h3 class="title dd-handle"><i class=" material-icons ">filter_none</i>  title of job</h3>
-        <div class="text" contenteditable="true">Paul Rand once said, “The public is more familiar with bad fucking design than good design. It is, in effect, conditioned to prefer bad design,</div><div class="actions">
-        <i class="material-icons">palette</i><i class="material-icons">edit</i><i class="material-icons">insert_link</i><i class="material-icons">attach_file</i></div>
-      
-    </li>
-  </ol>
-  <ol class="kanban  Done">
-    <h2><i class="material-icons">check_circle</i> Done</h2>
-      <li class="dd-item" data-id="5">
-      <h3 class="title dd-handle"><i class=" material-icons ">filter_none</i>  title of job</h3>
-        <div class="text" contenteditable="true">Paul Rand once said, “The public is more familiar with bad fucking design than good design. It is, in effect, conditioned to prefer bad design,</div><div class="actions">
-        <i class="material-icons">palette</i><i class="material-icons">edit</i><i class="material-icons">insert_link</i><i class="material-icons">attach_file</i></div>
-      
-    </li></li><li class="dd-item" data-id="2">
-      <h3 class="title dd-handle"><i class=" material-icons ">filter_none</i>  title of job</h3>
-        <div class="text" contenteditable="true">Paul Rand once said, “The public is more familiar with bad fucking design than good design. It is, in effect, conditioned to prefer bad design,</div><div class="actions">
-        <i class="material-icons">palette</i><i class="material-icons">edit</i><i class="material-icons">insert_link</i><i class="material-icons">attach_file</i></div>
-      
-    </li>
-    <div class="actions">
-      <button class="addbutt"><i class="material-icons">control_point</i> Add new</button>
-    </div>
-  </ol>
-  <ol class="kanban Gone">
-    <h2><i class="material-icons">delete</i> Gone</h2>
-     <li class="dd-item" data-id="5">
-      <h3 class="title dd-handle"><i class=" material-icons ">filter_none</i>  title of job</h3>
-        <div class="text" contenteditable="true">Paul Rand once said, “The public is more familiar with bad fucking design than good design. It is, in effect, conditioned to prefer bad design,</div><div class="actions">
-        <i class="material-icons">palette</i><i class="material-icons">edit</i><i class="material-icons">insert_link</i><i class="material-icons">attach_file</i></div>
-      
-    </li>
-    <div class="actions">
-      <button class="addbutt"><i class="material-icons">control_point</i> Add new</button>
-    </div>
-  </ol>
+            <ol class= "{{ one_col.palette }}">
+              <div class="kanban__title">
+                <h2><i class="material-icons">{{ one_col.icon }}</i> {{ one_col.title }}</h2></div> 
 
-</div>
-<menu class="kanban"><button><i class="material-icons">settings</i></button> <button><i class="material-icons">chevron_left</i></button>
-  <button class="viewkanban"><i class="material-icons ">view_column</i></button>
-  <button class="viewlist"><i class="material-icons">view_list</i></button>
-  <button><i class="material-icons">playlist_add</i> Add new Column</button></menu>
-<!-- partial -->
+                  {% if todos %}
+                    {% for todo in todos%}
+                      {% if todo.column == one_col %}
+                        <li class="dd-item" data-id="{{todo.id}}">
+                          <h3 class="title dd-handle" > <i class=" material-icons ">filter_none</i> {{ todo.title }}</h3>
+                            <div class="text" contenteditable="true">{{ todo.description }}</div>
+                            {% if todo.attachment %}
+                              <a href="{{MEDIA_URL}}/media/{{ todo.attachment }}">Attachement</a>
+                            {% endif %}
+                            <div class="actions">
+                              <i class="material-icons" id="color">palette</i><i class="material-icons">edit</i>
+                              <i class="material-icons">insert_link</i><i class="material-icons">attach_file</i>
+                            </div>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}               
+               <li class="dd-item">
+                <div class="actions" class="dd-item">
+                  <button class="addbutt" id="{{ one_col.title }}" onclick="location.href = 'add_todo/'"><i class="material-icons">control_point</i> Add new</button>
+                </div>
+              </li>
+            </ol>
+          {% endfor %}
+      {% else %}
+        <h2> <i class="material-icons">error</i> No todos yet </h2></div>
+      {% endif %}
+    </div>
+
+    <menu class="kanban"><button><i class="material-icons">settings</i></button> <button><i class="material-icons">chevron_left</i></button>
+      <button class="viewkanban"><i class="material-icons ">view_column</i></button>
+      <button class="viewlist"><i class="material-icons">view_list</i></button>
+      <button onclick="location.href = 'add_column/'"><i class="material-icons">playlist_add</i>  Add new Column </button>
+      </menu>
+
+      
+
+    <!-- partial -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js'></script><script  src="{% static 'script.js' %}"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js'></script>
+  <script  src="{% static 'script.js' %}"></script>
 
 </body>
 </html>

@@ -1,3 +1,22 @@
 from django.db import models
 
-# Create your models here.
+
+class Column (models.Model):
+    title = models.CharField(max_length=20)
+    icon = models.CharField(max_length=20, blank=True, default="default")
+    palette = models.CharField(max_length=20, blank=True, default="default")
+
+    def __str__(self):
+        return self.title
+
+
+class Todo(models.Model):
+    title = models.CharField(max_length=20)
+    description = models.CharField(max_length=500)
+    column = models.ForeignKey(Column, on_delete=models.CASCADE)
+    palette = models.CharField(max_length=20, blank=True)
+    link = models.CharField(max_length=100, blank=True)
+    attachment = models.FileField(upload_to="files", blank=True)
+
+    def __str__(self):
+        return self.title 
