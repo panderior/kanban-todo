@@ -24,8 +24,10 @@ def addColumn(request):
     return render(request, 'todo/add_column.html', {'column_form': column_form})
 
 
-def addTodo(request):
+def addTodo(request, column=None):
     todo_form = TodoForm()
+    column_list = Column.objects.all()
+    context_dic = {'todo_form': todo_form, "column": column}
 
     if request.method == 'POST':
         column = Column.objects.get(title=request.POST['column'])
@@ -38,6 +40,12 @@ def addTodo(request):
             todo.save(0)
             return redirect('/')
         else:
-            print("Add Column Unsucessfull")
             print(todo_form.errors)
-    return render(request, 'todo/add_todo.html', {'todo_form': todo_form})
+    else:
+        context_dic["columns"] = column_list
+    return render(request, 'todo/add_todo.html', context_dic)
+
+def link_redirect(request, link=None):
+    print("************")
+    print(link)
+    return redirect(link)

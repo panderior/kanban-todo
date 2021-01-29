@@ -27,11 +27,29 @@
         </div>   
         <div class="form-group">
             <label for="id_column">Column</label>
-            <input name="column" type="text" class="form-control" id="id_column" placeholder="Enter column">
+            <select id="id_column" name="column" class="form-control">
+                <option value="" disabled selected>Choose your option</option>
+                {% if columns %}
+                    {% for one_col in columns %}
+                        {% if  one_col.title == column %}
+                            <option value="{{ one_col.title }}" selected="selected"> {{ one_col.title }} </option>
+                        {% else  %}
+                            <option value="{{ one_col.title }}" > {{ one_col.title }} </option>
+                        {%  endif %}
+                    {% endfor %}
+                {% endif %}
+            </select>
+
         </div>      
         <div class="form-group">
             <label for="id_palette">Pallete</label>
-            <input name="palette" type="text" class="form-control" id="id_palette" placeholder="Enter palette">
+            <select id="id_palette" name="palette" class="form-control">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="kanban To-do" > Yellow </option>
+                <option value="kanban progress"> Blue </option>
+                <option value="kanban  Done"> Green </option>
+                <option value="kanban Gone"> Red </option>
+            </select>
         </div>      
         <div class="form-group">
             <label for="id_link">Link</label>

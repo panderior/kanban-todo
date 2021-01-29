@@ -37,6 +37,9 @@
                         <li class="dd-item" data-id="{{todo.id}}">
                           <h3 class="title dd-handle" > <i class=" material-icons ">filter_none</i> {{ todo.title }}</h3>
                             <div class="text" contenteditable="true">{{ todo.description }}</div>
+                            {% if todo.link %}
+                              <a href={% url 'link_redirect'%}>Link</a>
+                            {% endif %}
                             {% if todo.attachment %}
                               <a href="{{MEDIA_URL}}/media/{{ todo.attachment }}">Attachement</a>
                             {% endif %}
@@ -50,7 +53,7 @@
                   {% endif %}               
                <li class="dd-item">
                 <div class="actions" class="dd-item">
-                  <button class="addbutt" id="{{ one_col.title }}" onclick="location.href = 'add_todo/'"><i class="material-icons">control_point</i> Add new</button>
+                  <button class="addbutt" id="{{ one_col.title }}" onclick="location.href = 'add_todo/{{ one_col.title }}'"><i class="material-icons">control_point</i> Add new</button>
                 </div>
               </li>
             </ol>
