@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Column, Todo
 from .forms import ColumnForm, TodoForm
 
-
+''''
+    This is the base view, it retrives the list of columns and todos ...
+    from database and send it to the index.html page
+'''
 def index(request):
     column_list = Column.objects.all()
     todo_list = Todo.objects.all()
@@ -10,6 +13,11 @@ def index(request):
     return render(request, 'todo/index.html', context_dic)
 
 
+'''
+    This view gets invoked from the home page (index.html)
+    Obtains the data sent from the form and save it to the database
+    Else it returns the form to be filled
+'''
 def addColumn(request):
     column_form = ColumnForm()
     print(request.POST)
@@ -24,6 +32,12 @@ def addColumn(request):
     return render(request, 'todo/add_column.html', {'column_form': column_form})
 
 
+'''
+    This view gets invoked from the home page
+    It is used to add new todo to the database
+    If the request is post and the form is sent, this view saves it to the database
+    Else it returns the form to be filled
+'''
 def addTodo(request, column=None):
     todo_form = TodoForm()
     column_list = Column.objects.all()
@@ -45,7 +59,7 @@ def addTodo(request, column=None):
         context_dic["columns"] = column_list
     return render(request, 'todo/add_todo.html', context_dic)
 
-def link_redirect(request, link=None):
-    print("************")
-    print(link)
-    return redirect(link)
+# def link_redirect(request, link=None):
+#     print("************")
+#     print(link)
+#     return redirect(link)
